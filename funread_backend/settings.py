@@ -23,9 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'z*q#84&=4o14&)-z@uy-*dox9%_o7@%e*ls3obq8@8$u^m+5x9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+#TODO: unsecure
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -37,7 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
+    'TeacherApp.apps.TeacherappConfig'
 ]
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:8000"
+# ]
+
+#TODO: unsecure, only for testing
+CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -47,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'funread_backend.urls'
@@ -75,8 +88,12 @@ WSGI_APPLICATION = 'funread_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo', #pymongo == 3.12.1 otherwise raise error
+        'CLIENT': {
+            'host': 'mongodb+srv://JoyceChu:joycechu@cluster0.tepxi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+            'name': 'funReadDB',
+            'authMechanism': 'SCRAM-SHA-1' # for cloud db
+        }
     }
 }
 
