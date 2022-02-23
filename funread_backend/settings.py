@@ -11,10 +11,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import environ
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -98,8 +101,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo', #pymongo == 3.12.1 otherwise raise error
         'CLIENT': {
-            'host': 'mongodb+srv://JoyceChu:joycechu@cluster0.tepxi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-            'name': 'funReadDB',
+            'host': env('DATABASE_HOST'),
+            'name': '',
             'authMechanism': 'SCRAM-SHA-1' # for cloud db
         }
     }
