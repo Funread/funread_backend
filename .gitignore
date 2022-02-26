@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-=======
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
 ### Python ###
->>>>>>> 98244e0cbc00b087463c00b769b15f7baf528fda
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -27,10 +24,7 @@ parts/
 sdist/
 var/
 wheels/
-<<<<<<< HEAD
 pip-wheel-metadata/
-=======
->>>>>>> 98244e0cbc00b087463c00b769b15f7baf528fda
 share/python-wheels/
 *.egg-info/
 .installed.cfg
@@ -60,10 +54,7 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
-<<<<<<< HEAD
-=======
 cover/
->>>>>>> 98244e0cbc00b087463c00b769b15f7baf528fda
 
 # Translations
 *.mo
@@ -86,10 +77,7 @@ instance/
 docs/_build/
 
 # PyBuilder
-<<<<<<< HEAD
-=======
 .pybuilder/
->>>>>>> 98244e0cbc00b087463c00b769b15f7baf528fda
 target/
 
 # Jupyter Notebook
@@ -100,13 +88,10 @@ profile_default/
 ipython_config.py
 
 # pyenv
-<<<<<<< HEAD
 .python-version
-=======
 #   For a library or package, you might want to ignore these files since the code is
 #   intended to run in multiple environments; otherwise, check them in:
 # .python-version
->>>>>>> 98244e0cbc00b087463c00b769b15f7baf528fda
 
 # pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
@@ -115,8 +100,6 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
-<<<<<<< HEAD
-=======
 # poetry
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
@@ -124,7 +107,6 @@ ipython_config.py
 #   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
 #poetry.lock
 
->>>>>>> 98244e0cbc00b087463c00b769b15f7baf528fda
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
 
@@ -161,8 +143,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-<<<<<<< HEAD
-=======
 
 # pytype static type analyzer
 .pytype/
@@ -179,4 +159,3 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 
->>>>>>> 98244e0cbc00b087463c00b769b15f7baf528fda
