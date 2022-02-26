@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Main Branch
 
 # Development Branch
@@ -23,4 +22,3 @@ git push origin <your-branch>
 6. When each phase ends, one of your team member creates merge request from `development` to `main`.
 
 7. After all your teammates and I agree, update `main` branch by approving the merge request.
->>>>>>> 98244e0cbc00b087463c00b769b15f7baf528fda
