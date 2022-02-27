@@ -11,22 +11,31 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
+from smtpd import DebuggingServer
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import environ
+
+# Initialise environment variables
+env = environ.Env()
+
+# Take environment variables from .env file
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'z*q#84&=4o14&)-z@uy-*dox9%_o7@%e*ls3obq8@8$u^m+5x9'
+# Raises Django's ImproperlyConfigured
+# exception if SECRET_KEY not in os.environ
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+#TODO: unsecure
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -37,7 +46,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #rest framwork
+    'rest_framework',
+
+    #CORS
+    'corsheaders',
+
+    #TeacherApp
+    'TeacherApp.apps.TeacherappConfig'
 ]
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:8000"
+# ]
+
+#TODO: unsecure, only for testing
+CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -47,6 +72,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    #CORS
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'funread_backend.urls'
@@ -75,8 +103,12 @@ WSGI_APPLICATION = 'funread_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo', #pymongo == 3.12.1 otherwise raise error
+        'CLIENT': {
+            'host': env('DATABASE_HOST'),
+            'name': env('DATABASE_NAME'),
+            'authMechanism': 'SCRAM-SHA-1' # for cloud db
+        }
     }
 }
 
