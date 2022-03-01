@@ -25,7 +25,9 @@ def studentAPI(request, id=0):
             return JsonResponse("Added Successfully", safe=False)
         return JsonResponse("Failed to Add", safe=False)
     elif request.method=='PUT':
+        print("Marker: In PUT")
         student_data = JSONParser().parse(request)
+        print("student_id: " + str(student_data['student_id']))
         student = Student.objects.get(student_id=student_data['student_id'])
         student_serializer = StudentSerializer(student, data=student_data)
         if student_serializer.is_valid():
