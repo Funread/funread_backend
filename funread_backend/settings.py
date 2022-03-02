@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'whatthefuck'
 ]
 
 MIDDLEWARE = [
@@ -75,11 +77,15 @@ WSGI_APPLICATION = 'funread_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'whatthefuck',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': 'localhost',
+            'port': 27017,
+        }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
