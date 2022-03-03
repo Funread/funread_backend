@@ -6,3 +6,6 @@ class Teachers(models.Model):
     TeacherId = models.AutoField(primary_key=True)
     TeacherName = models.CharField(max_length=500)
     TeacherPwd = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.TeacherName

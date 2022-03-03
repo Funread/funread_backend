@@ -1,9 +1,10 @@
+from django.http import HttpResponse
 from TeacherApp.models import Teachers
 from TeacherApp.serializers import TeacherSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-
+from django.shortcuts import render, redirect
 # Create your views here.
 
 @api_view(['GET', 'POST'])
@@ -49,5 +50,46 @@ def teacher_detail(request, pk):
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
+def home(request):
+    if 'teacher' in request.session:
+        current_teacher = request.session['teacher']
+        param = {'current_teacher': current_teacher}
+        return render(request, 'home.html', param) 
+    else:
+        return redirect('login')
+    return render(request, 'login.html')
 
+def register(request):
+    if request.method=='POST':
+        tName = request.POST.get('tName')
+        tPwd = request.POST.get('tPwd')
+
+        if Teachers.objects.filter(TeacherName=tName).count()>0:
+            return HttpResponse('Teacher already exist.')
+        else:
+            teacher = Teachers(TeacherName=tName, TeacherPwd=tPwd)
+            teacher.save()
+            return redirect('login')
+    else:
+        return render(request, 'register.html')
+
+def login(request):
+    if request.method == 'POST':
+        tName = request.POST.get('tName')
+        tPwd = request.POST.get('tPwd')
+
+        check_teacher = Teachers.objects.filter(TeacherName=tName, TeacherPwd=tPwd)
+        if check_teacher:
+            request.session['teacher'] = tName
+            return redirect('home')
+        else:
+            return HttpResponse('Please enter valid teacher name or password')
+    return render(request, 'login.html')
+
+def logout(request):
+    try:
+        del request.session['teacher']
+    except:
+        return redirect('login')
+    return redirect('login')
 
