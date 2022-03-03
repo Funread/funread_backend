@@ -32,6 +32,7 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# Set to True to access rest_framwork API UI
 DEBUG = True
 
 #TODO: unsecure
@@ -54,7 +55,6 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #TeacherApp
-    #'TeacherApp.apps.TeacherappConfig'
     'TeacherApp'
 ]
 
