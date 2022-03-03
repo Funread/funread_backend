@@ -11,18 +11,16 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 # from smtpd import DebuggingServer
 from pathlib import Path
-from environ import env
+import environs
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-import environ
-
 # Initialise environment variables
-env = environ.Env()
+env = environs.Env()
 
 # Take environment variables from .env file
-environ.Env.read_env()
+environs.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
