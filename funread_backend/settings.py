@@ -64,6 +64,10 @@ INSTALLED_APPS = [
 #TODO: unsecure, only for testing
 CORS_ORIGIN_ALLOW_ALL = True
 
+ALLOWED_HOSTS = [
+    "funread-backend.herokuapp.com",
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
