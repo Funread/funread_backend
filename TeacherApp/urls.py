@@ -8,7 +8,7 @@ urlpatterns=[
     path('', views.teacher_list),
     path('<int:pk>/', views.teacher_detail),
 
-    #for login logout session (localhost:8000/teachers/home)
+    #for login logout session (localhost:8000/teachers/home/)
     path('home/', views.home, name='home'),
     path('register/', views.register, name='register'),
     path('login/', views.login, name='login'),
