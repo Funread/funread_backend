@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'whatthefuck'
 ]
 
 MIDDLEWARE = [
@@ -79,7 +78,7 @@ WSGI_APPLICATION = 'funread_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'whatthefuck',
+        'NAME': env('DB_NAME'),
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
             'host': 'localhost',
