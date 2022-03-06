@@ -67,6 +67,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 ALLOWED_HOSTS = [
     "localhost",
     "funread-backend.herokuapp.com",
+    "funread.uc.r.appspot.com",
 ]
 
 MIDDLEWARE = [
