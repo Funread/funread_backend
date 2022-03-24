@@ -37,7 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'AuthApp.apps.AuthappConfig',
+    'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
+
+AUTH_USER_MODEL = "AuthApp.User" 
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,8 +87,12 @@ WSGI_APPLICATION = 'funread_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'CLIENT': {
+          'host': 'mongodb+srv://kim_jinhyuk:zW8tmyFtCBskKeOs@funread-cloud.7a4vx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+          'name': 'funReadDB',
+          'authMechanism': 'SCRAM-SHA-1' # for cloud db
+        }
     }
 }
 
