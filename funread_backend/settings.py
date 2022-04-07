@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'AuthApp.apps.AuthappConfig',
+    'BookCreator.apps.BookcreatorConfig',
     'rest_framework',
 ]
 

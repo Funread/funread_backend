@@ -76,6 +76,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     # falsed.
     is_staff = models.BooleanField(default=False)
 
+
     # More fields required by Django when specifying a custom user model.
 
     # The `USERNAME_FIELD` property tells us which field we will use to log in.
