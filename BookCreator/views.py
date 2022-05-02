@@ -18,7 +18,7 @@ def book_creator(request):
     if serializer.is_valid(): 
       serializer.save()
       return JsonResponse("Added book successfully", safe=False)
-    return JsonResponse("failed to add", safe=False)
+    return JsonResponse(serializer._errors, safe=False)
   elif request.method == 'DELETE':
     books = BookCreator.objects.all()
     books.delete()
